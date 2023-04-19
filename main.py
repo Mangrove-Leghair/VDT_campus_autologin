@@ -2,6 +2,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
 import os
@@ -24,11 +25,13 @@ if not (username and password):
 # Use the credentials
 print(f"Welcome, {username}!")
 
+
 # set up the webdriver with the desired browser (e.g. Chrome)
-caps = DesiredCapabilities().CHROME
-caps['acceptInsecureCerts'] = True
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+options = Options()
+options.set_capability("acceptInsecureCerts", True)
+
 # navigate to the login page
+driver = webdriver.Chrome(options=options)
 driver.get("https://172.16.0.1:8090/")
 
 # wait for the page to fully load
