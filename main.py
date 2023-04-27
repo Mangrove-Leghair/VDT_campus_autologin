@@ -17,7 +17,7 @@ class Login:
         self.options = Options()
         capabilities = DesiredCapabilities.CHROME.copy()
         capabilities['acceptInsecureCerts'] = True
-        self.driver = webdriver.Chrome(desired_capabilities=capabilities, options=self.options)
+        self.driver = webdriver.Chrome(executable_path="C:\Program Files\Auto_login\chromedriver.exe",desired_capabilities=capabilities, options=self.options)
         self.driver.get("https://172.16.0.1:8090/")
 
         self.login()
